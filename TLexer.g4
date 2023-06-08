@@ -1,21 +1,60 @@
 lexer grammar TLexer;
 
-Int : 'int';
+COMMENT: ('/*' .*? '*/' | '//' ~[\r\n]*) -> skip;
+And: 'and';
+Not: 'not';
+Or: 'or';
+To: 'to';
+By: 'by';
+Int: 'int';
+Bool: 'bool';
+Char: 'char';
+Return: 'return';
+Break: 'break';
+If: 'if';
+Then: 'then';
+Else: 'else';
+For: 'for';
+While: 'while';
+Do: 'do';
+True: 'true';
+False: 'false';
+Static: 'static';
 
-Float: 'float';
-
-Void: 'void';
-
-Identifier: [a-zA-Z][a-zA-Z0-9_]*;
-
-Number: [0-9]+;
-
+ID: Letter LetDig*;
+NUMCONST: Digit+;
+CHARCONST: '\'' ( ~'\'')? '\'';
+STRINGCONST: '"' ~('"')* '"';
+LetDig: Digit | Letter;
+Letter: [a-zA-Z];
+Digit: [0-9];
 Comma: ',';
-
-EqualTo: '=';
-
-Add: '+';
-
 SemiColon: ';';
+LessorEqual: '<=';
+GreatorEqual: '>=';
+LessThan: '<';
+GreaterThan: '>';
+DoubleEqual: '==';
+NotEqual: '!=';
+Increment: '++';
+Decrement: '--';
+PlusEqual: '+=';
+MinusEqual: '-=';
+StarEqual: '*=';
+ForEqual: '/=';
+Equal: '=';
+Colon: ':';
+Plus: '+';
+Minus: '-';
+Star: '*';
+ForSlash: '/';
+Percent: '%';
+OpenPar: '(';
+ClosePar: ')';
+OpenCurly: '{';
+CloseCurly: '}';
+OpenSqu: '[';
+CloseSqu: ']';
+QuestionMark: '?';
 
-WS: [ \t\r\n]+ -> skip;
+WhiteSpace: [ \t\r\n]+ -> skip;

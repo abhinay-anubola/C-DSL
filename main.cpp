@@ -20,10 +20,10 @@ using namespace std;
 using namespace antlrcpptest;
 using namespace antlr4;
 
-int main(int, const char **)
+int main(int argc, char** argv)
 {
-    std::ifstream stream;
-    stream.open("input.@");
+    ifstream stream;
+    stream.open(argv[1]);
     ANTLRInputStream input(stream);
     TLexer lexer(&input);
     CommonTokenStream tokens(&lexer);
