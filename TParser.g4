@@ -15,7 +15,7 @@ scopedVarDecl:
 varDeclList: varDeclList Comma varDeclInit | varDeclInit;
 varDeclInit: varDeclId | varDeclId Equal simpleExp;
 varDeclId: ID (OpenSqu NUMCONST CloseSqu)?;
-typeSpec: Int | Bool | Char;
+typeSpec: Int | Bool | Char | VInt;
 
 funDecl:
 	typeSpec ID OpenPar parms ClosePar stmt
@@ -80,4 +80,4 @@ immutable: OpenPar exp ClosePar | call | constant;
 call: ID OpenPar args ClosePar;
 args: argList |;
 argList: argList Comma exp | exp;
-constant: NUMCONST | CHARCONST | STRINGCONST | True | False;
+constant: NUMCONST | CHARCONST | STRINGCONST | VECTORCONST | True | False;
