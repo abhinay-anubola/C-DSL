@@ -13,7 +13,7 @@ scopedVarDecl:
 	Static typeSpec varDeclList SemiColon
 	| typeSpec varDeclList SemiColon;
 varDeclList: varDeclList Comma varDeclInit | varDeclInit;
-varDeclInit: varDeclId | varDeclId Colon simpleExp;
+varDeclInit: varDeclId | varDeclId Equal simpleExp;
 varDeclId: ID (OpenSqu NUMCONST CloseSqu)?;
 typeSpec: Int | Bool | Char;
 
@@ -38,14 +38,13 @@ compoundStmt: OpenCurly localDecls stmtList CloseCurly;
 localDecls: localDecls scopedVarDecl |;
 stmtList: stmtList stmt |;
 selectStmt:
-	If simpleExp Then stmt
-	| If simpleExp Then stmt Else stmt;
+	If OpenPar simpleExp ClosePar stmt
+	| If OpenPar simpleExp ClosePar stmt Else stmt;
 iterStmt:
-	While simpleExp Do stmt
-	| For ID Equal iterRange Do stmt;
-iterRange:
-	simpleExp To simpleExp
-	| simpleExp To simpleExp By simpleExp;
+	While OpenPar simpleExp ClosePar stmt
+	| For OpenPar iterRange ClosePar stmt;
+iterRange: (typeSpec varDeclList? | exp?) ';' exp? ';' exp?;
+
 returnStmt: Return SemiColon | Return exp SemiColon;
 breakStmt: Break SemiColon;
 

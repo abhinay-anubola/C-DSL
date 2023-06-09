@@ -1,9 +1,9 @@
 lexer grammar TLexer;
 
 COMMENT: ('/*' .*? '*/' | '//' ~[\r\n]*) -> skip;
-And: 'and';
-Not: 'not';
-Or: 'or';
+And: '&&';
+Not: '!';
+Or: '||';
 To: 'to';
 By: 'by';
 Int: 'int';
@@ -12,11 +12,9 @@ Char: 'char';
 Return: 'return';
 Break: 'break';
 If: 'if';
-Then: 'then';
 Else: 'else';
 For: 'for';
 While: 'while';
-Do: 'do';
 True: 'true';
 False: 'false';
 Static: 'static';
